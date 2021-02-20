@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HeroModel } from '../../models/heros';
 @Component({
   selector: 'app-edit',
@@ -11,9 +10,13 @@ export class EditComponent implements OnInit {
   public hero = new HeroModel();
 
   constructor() {
-
   }
 
   ngOnInit(): void {
   }
+  
+  Save(){
+    console.log(this.hero);
+  }
+
 }
