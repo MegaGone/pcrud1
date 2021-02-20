@@ -1,1 +1,58 @@
-<p>heros works!</p>
+<div class="container">
+    <div class="col">
+        <h1 class="text-center">Hero's List</h1>
+    </div>
+
+    <hr>
+
+    <!-- Add or edit hero -->
+    <div class="row">
+        <div class="col text-right">
+            <button [routerLink]="['/edit/new']" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Add
+            </button>
+        </div>
+    </div>
+
+    <!-- Heros data -->
+    <div class="row mt-3">
+        <table class="table text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Power</th>
+                    <th>Status</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>Example</td>
+                    <td>Example</td>
+                    <td>Example</td>
+                    <td>Example</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Data status -->
+    <div class="alert alert-info text-center">
+        <h4>Loading!</h4>
+        <div class="col">
+            <i class="fas fa-sync fa-spin fa-4x"></i>
+        </div>
+        <small class="pt-5">Please wait...</small>
+    </div>
+
+    <div class="alert alert-warning text-center">
+        <h4>Warning!</h4>
+        <div class="col">
+            <i class="fas fa-exclamation-triangle fa-4x"></i>
+        </div>
+        <small class="pt-5">Please try to add heros...</small>
+    </div>
+</div>

@@ -3,12 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HerosComponent } from './pages/heros/heros.component';
 import { EditComponent } from './pages/edit/edit.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+
 
 const routes: Routes = [
   { path: 'heroes', component: HerosComponent },
-  { path: 'edit', component: EditComponent },
-  { path: 'navbar', component: NavbarComponent},
+  { path: 'edit/:new', component: EditComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'heroes' }
 ];
 
