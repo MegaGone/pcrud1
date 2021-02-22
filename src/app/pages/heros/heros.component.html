@@ -28,12 +28,23 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>Example</td>
-                    <td>Example</td>
-                    <td>Example</td>
-                    <td>Example</td>
+                <tr *ngFor="let hero of heros; let i = index">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ hero.name}}</td>
+                    <td>{{ hero.power}}</td>
+                    <td>
+                        <span *ngIf="hero.status" class="badge bg-success">Alive</span>
+                        <span *ngIf="!hero.status" class="badge bg-danger">Deceased</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-info mr-1" [routerLink]="['/edit', hero.id]">
+                            <i class="fa fa-pen"></i>
+                        </button>
+
+                        <button class="btn btn-danger" (click)="deleteHero(hero, i)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
