@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HerosService } from 'src/app/services/heros.service';
 import Swal from 'sweetalert2';
 import { HeroModel } from '../../models/heros';
@@ -13,7 +13,7 @@ export class EditComponent implements OnInit {
 
   public hero: any = new HeroModel();
 
-  constructor(private heroSvc: HerosService, private route: ActivatedRoute) {
+  constructor(private heroSvc: HerosService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -47,7 +47,7 @@ export class EditComponent implements OnInit {
         Swal.fire({
           title: `${name}`,
           icon: 'success',
-          text: `${name} add successfully`,
+          text: `${name} uptade successfully`,
           showConfirmButton: false,
           timer: 1500
         });
@@ -57,14 +57,19 @@ export class EditComponent implements OnInit {
       this.heroSvc.createHero(this.hero).subscribe(res => {
 
         const name = this.hero.name;
+        f.reset();
         Swal.fire({
           title: `${name}`,
           icon: 'success',
-          text: `${name} add successfully`,
-          showConfirmButton: false,
-          timer: 1500
+          text: `${name} create successfully`,
+          showConfirmButton: true,
+          allowOutsideClick: false
+        }).then( res => {
+          
+          if(res.isConfirmed){
+            this.router.navigate(['/heros'])
+          }
         });
-        //f.reset();
       });
     }
   }
