@@ -39,5 +39,5 @@ export class HerosComponent implements OnInit {
       }
 
     })
-  }
+  };
 }
