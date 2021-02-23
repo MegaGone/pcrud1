@@ -16,7 +16,9 @@
     </div>
 
     <!-- Heros data -->
-    <div class="row mt-3">
+    <div 
+    *ngIf="!loading && heros.length > 0"
+    class="row mt-3">
         <table class="table text-center">
             <thead class="table-dark">
                 <tr>
@@ -51,7 +53,9 @@
     </div>
 
     <!-- Data status -->
-    <div class="alert alert-info text-center">
+    <div 
+    *ngIf="loading"
+    class="alert alert-info text-center mt-2">
         <h4>Loading!</h4>
         <div class="col">
             <i class="fas fa-sync fa-spin fa-4x"></i>
@@ -59,7 +63,9 @@
         <small class="pt-5">Please wait...</small>
     </div>
 
-    <div class="alert alert-warning text-center">
+    <div 
+    *ngIf="!loading && heros.length === 0"
+    class="alert alert-warning text-center mt-2">
         <h4>Warning!</h4>
         <div class="col">
             <i class="fas fa-exclamation-triangle fa-4x"></i>

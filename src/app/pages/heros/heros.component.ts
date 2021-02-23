@@ -10,8 +10,10 @@ import Swal from 'sweetalert2';
 export class HerosComponent implements OnInit {
 
   public heros: HeroModel[] = [];
+  public loading: boolean;
 
   constructor(private heroSvc: HerosService) {
+    this.loading = true;
   }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class HerosComponent implements OnInit {
   getHeros() {
     this.heroSvc.getHeros().subscribe(res => {
       this.heros = res;
+      this.loading = false;
     });
   }
 
@@ -34,8 +37,9 @@ export class HerosComponent implements OnInit {
     }).then(res => {
 
       if (res.value) {
-        this.heros.splice(i, 1);
-        this.heroSvc.deleteHero(hero.id);
+        this.heroSvc.deleteHero(hero.id).subscribe( res => {
+          this.heros.splice(i, 1);
+        });
       }
 
     })
